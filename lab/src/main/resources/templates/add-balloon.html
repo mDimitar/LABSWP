@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{'/balloons/add/{id}' (id = ${balloon?.getId()})}" th:method="post">
+  <input type="text" name = "name" placeholder="Enter balloon name" th:value="${balloon?.getName()}">
+  <input type="text" name = "description" placeholder="Enter description" th:value="${balloon?.getDescription()}">
+  <select name = "manufacturerId" >
+    <option th:each = "man : ${manufactures}" th:value="${man.getId()}" th:text="${man.getName()}"
+            th:selected="${balloon != null && balloon.getManufacturer().getId() == man.getId() }"></option>
+  </select>
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>

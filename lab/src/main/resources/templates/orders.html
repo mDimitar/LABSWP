@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="${session.clientName}"></p>
+<p th:text="${session.clientAddress}"></p>
+<div th:each="order: ${orders}">
+
+  <span th:text="${order.getBaloonColor()}"></span>
+
+    <span th:if = "${order.getDateTime() != null}" th:text="${#temporals.format(order.getDateTime(), 'dd-MM-yyyy HH:mm')}"></span>
+</div>
+</body>
+</html>
